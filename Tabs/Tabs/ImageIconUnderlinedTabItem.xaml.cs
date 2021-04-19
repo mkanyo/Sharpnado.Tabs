@@ -43,7 +43,7 @@ namespace Sharpnado.Tabs
             LabelSize = 12;
 
             UpdateTextVisibility();
-            UpdateColors();
+            UpdateImageColor();
         }
 
         [TypeConverter(typeof(ImageSourceConverter))]
@@ -96,7 +96,7 @@ namespace Sharpnado.Tabs
                 case nameof(UnselectedIconColor):
                 case nameof(SelectedTabColor):
                 case nameof(IsSelected):
-                    UpdateColors();
+                    UpdateImageColor();
                     break;
 
                 case nameof(IconImageSource):
@@ -114,12 +114,12 @@ namespace Sharpnado.Tabs
             }
             else
             {
-                TextRowDefinition.Height = new GridLength(0);
+                TextRowDefinition.Height = new GridLength(UnderlineHeight);
                 Icon.VerticalOptions = LayoutOptions.Center;
             }
         }
 
-        private void UpdateColors()
+        private void UpdateImageColor()
         {
             ImageEffect.SetTintColor(Icon, IsSelected ? SelectedTabColor : UnselectedIconColor);
         }
